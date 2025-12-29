@@ -1,41 +1,106 @@
-# Prerequisites
+# ============================================================
+# 1. 通用编译与系统文件 (General Compiled & System Files)
+# ============================================================
+# 编译中间对象
 *.d
-
-# Compiled Object files
-*.slo
-*.lo
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
+*.slo
+*.lo
+*.ko
 *.so
+*.so.*
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
+*.lib
 *.lai
 *.la
 *.a
-*.lib
 
-# Executables
+# 可执行文件与调试信息
 *.exe
 *.out
 *.app
-
-# debug information files
+*.i*86
+*.x86_64
+*.hex
+*.pdb
 *.dwo
+
+# 压缩包与备份
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*~
+*.bak
+*.swp
+
+# 操作系统相关
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# 2. 数字 IC 仿真工具 (VCS / Verdi / DVE)
+# ============================================================
+# VCS 编译产物
+csrc/               # 核心编译目录
+simv* # 仿真执行二进制文件 (如 simv, simv.daidir)
+*.daidir/           # 仿真中间数据
+*.vdb/              # 覆盖率数据库 (Coverage Database)
+ucli.key            # VCS 交互控制脚本日志
+vc_hdrs.h           # DPI-C 自动生成头文件
+urgReport/          # 覆盖率报告目录
+DVEfiles/           # DVE 界面配置文件
+stack.info.* # 仿真崩溃时的堆栈信息
+
+# Verdi / Novas 产物
+verdiLog/           # Verdi 运行日志
+novas.conf          # Verdi 配置文件
+novas.rc            # Verdi 资源文件
+novas.last          # Verdi 上次打开记录
+*.fsdb              # 核心波形文件 (通常很大)
+*.vcd               # 标准波形文件
+*.vpd               # DVE 波形文件
+*.conf              # 工具生成的配置
+
+# ============================================================
+# 3. 逻辑综合与后端工具 (Design Compiler / Genus / Vivado)
+# ============================================================
+# 日志与临时文件
+*.log               # 所有的运行日志
+*.jou               # 工具流水记录 (Journal)
+*.pb                # 协议缓冲文件
+*.dir/              # 自动生成的中间目录
+*.prm               # 参数文件
+
+# 报告与输出
+reports/            # 建议将生成的 Report 放在此目录下并忽略
+output/             # 建议将生成的 Netlist 放在此目录下并忽略
+*.rpt               # 各种 Timing/Area Report
+
+# Vivado 特有
+.Xil/               # Vivado 临时目录
+*.str               # Vivado 运行记录
+
+# ============================================================
+# 4. 脚本语言与环境 (Python / Tcl)
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# ============================================================
+# 5. 特殊处理 (Exceptions)
+# ============================================================
+# 如果你想保留某个特定的 log 或文件夹，可以在下面使用 !
+# 例如：不忽略项目说明文档中的 log
+# !docs/setup.log
